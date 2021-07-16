@@ -111,7 +111,7 @@ export default (app:Router)=>{
             console.log('no-file')
             return next(error)
           }   
-          res.json({Status: 'Image Uploaded', Imagename: req.file.filename });   
+          res.json({Status: 'Image Uploaded', Imagename: req.file.filename,Imagepath:"/upload/"+ req.file.filename });   
  })
 }
 

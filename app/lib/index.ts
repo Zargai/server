@@ -6,15 +6,13 @@ export default async ({ expressApp }) => {
 
   const mongoConnection = await mongooseLoader()
  
-  const userModel = { 
-     name: 'userModel', 
-     model: require('../models/Users/user').default, 
-    };
+  const userModel = {  name: 'userModel',   model: require('../models/Users/user').default, };
+  const safepotblogcomponentModel = {  name: 'safepotblogcomponentModel',   model: require('../models/safepotblogcomponent').default, };
 
   const { agenda } = await injector({
     mongoConnection,
     models: [
-      userModel
+      userModel, safepotblogcomponentModel
         ]  
   });
 
