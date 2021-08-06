@@ -1,6 +1,6 @@
 import { Service, Inject } from 'typedi';
 import argon2 from 'argon2';
-import { IsafepotblogcomponentInput,Isafepotblogcomponent } from '../interfaces/ISafepotblogcomponent';
+import { IsafepotblogcomponentInput,Isafepotblogcomponent } from '../interfaces/MainComponent/ISafepotblogcomponent';
 import jwt from 'jsonwebtoken'
 
 @Service()

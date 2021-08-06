@@ -1,8 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { Container } from 'typedi';
-import safepotblogcomponentService from '../../services/safepotblogcomponent';
-import { IsafepotblogcomponentInput,Isafepotblogcomponent } from '../../interfaces/ISafepotblogcomponent';
-import Auth from '../middleware/auth';
+import safepotblogcomponentService from '../../../services/safepotblogcomponent';
+import { IsafepotblogcomponentInput,Isafepotblogcomponent } from '../../../interfaces/MainComponent/ISafepotblogcomponent';
+import Auth from '../../middleware/auth';
 const multer = require("multer");
 
 const route  = Router();  

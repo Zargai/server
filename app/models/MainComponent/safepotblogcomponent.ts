@@ -1,4 +1,4 @@
-import {Isafepotblogcomponent } from '../interfaces/ISafepotblogcomponent';
+import {Isafepotblogcomponent } from '../../interfaces/MainComponent/ISafepotblogcomponent';
 import mongoose from 'mongoose';
 
 const safepotblogcomponent = new mongoose.Schema(

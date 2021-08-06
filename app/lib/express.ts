@@ -20,7 +20,7 @@ export default ({ app }: { app: express.Application }) => {
   app.use(cors());
   app.use(require('method-override')());
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}))
+  app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}))
   app.use(responseTime());
   
 
