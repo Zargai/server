@@ -32,6 +32,7 @@ export default class pagebannercomponentService {
       throw e;
     }
   }
+  
 
   //getalldata
   public async getall(): Promise<{ Record: Array<IPageBannerInput>; }> {
@@ -47,5 +48,12 @@ export default class pagebannercomponentService {
       console.log(e);
       throw e;
     }
+    
+  }
+  //for adding data
+  public async imageupload(body: IPageBannerInput): Promise<{ message: string, success: boolean }> {
+    console.log("image upload Route ==>")
+    const { message, success } = await this.update(body as IPageBannerInput);
+    return{message,success}
   }
 }

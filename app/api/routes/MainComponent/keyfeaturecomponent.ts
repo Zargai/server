@@ -4,8 +4,8 @@ import { IKeyFeatureInput, IKeyFeature } from '../../../interfaces/MainComponent
 import Auth from '../../middleware/auth';
 import keyfeaturecomponentService from '../../../services/keyfeaturecomponent';
 const multer = require("multer");
-
 const route = Router();
+
 
 export default (app: Router) => {
     app.use('/keyfeature', route)
@@ -55,7 +55,7 @@ export default (app: Router) => {
 
       var upload= multer({ storage: storage})
 
-    //API for uploading image of card-1
+    //API for uploading image of 
          route.post('/upload', upload.single('image'), async (req, res, next) => {
             const file = req.file;
             // console.log(req.body)

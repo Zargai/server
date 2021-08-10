@@ -13,10 +13,12 @@ export default (app: Router) => {
 
     //for adding
     route.post('/add', async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req.body);
+        console.log(req);
+     
         try {
-            const { Record } = await pagebannercomponentServiceInstance.Add(req.body as IPageBannerInput);
-            return res.status(201).json({ Record })
+            // const { Record } = await pagebannercomponentServiceInstance.Add(req.body as IPageBannerInput);
+            console.log(req.body)
+            return res.status(201).json({ record:"Record" })
         } catch (e) {
             console.log(e);
             return next(e)
@@ -55,21 +57,57 @@ export default (app: Router) => {
 
       var upload= multer({ storage: storage})
 
-    //API for uploading image of card-1
-         route.post('/upload', upload.single('image'), async (req, res, next) => {
+    //API for uploading image of 
+
+         route.post('/upload', upload.array('image'), async (req, res, next) => {
             const file = req.file;
             // console.log(req.body)
             if (!file) {
                 const error = new Error('Please upload a file')
                 return next(error)
               }   
-              
-              const body = {image:req.file.filename,pagename:req.body.name}
-              const { message, success } = await pagebannercomponentServiceInstance.update(body as ISliderComponentInput);
+              console.log("Body==>",req.body)
+              const body = {image:req.file.filename,pagename:req.body.pagename}
+              const { message, success } = await pagebannercomponentServiceInstance.update(body as IPageBannerInput);
               return res.status(201).json({message, success,Status: 'Image Uploaded', 
               Imagename: req.file.filename,
               Imagepath:"/upload/"+ req.file.filename});   
      })
+    // //API for uploading image of card-1
 
+    //      route.post('/uploads', upload.single('img'), async (req, res, next) => {
+    //         const file = req.file;
+    //         console.log("req id",req.params.id)
+    //         // console.log(req.body)
+    //         if (!file) {
+    //             const error = new Error('Please upload a file')
+    //             return next(error)
+    //           }   
+    //           const body = {image:req.file.filename,pagename:"aboutus"}
+    //          const { message, success } = await pagebannercomponentServiceInstance.imageupload(body as IPageBannerInput);
+    //          return res.status(201).json({message, success,Status: 'Image Uploaded', 
+    //           Imagename: req.file.filename,
+    //           Imagepath:"/upload/"+ req.file.filename}); 
+ 
+    //  })
+    //  ///image Uploading Apiiiii(Completed working)
+    //      route.post('/uploadimg', upload.single('img'), async (req, res, next) => {
+    //         const file = req.file;
+    //         if (!file) {
+    //             const error = new Error('Please upload a file')
+    //             return next(error)
+    //           }   
+    //         return res.status(201).json({Image:req.file.filename })
+    //         })
+    //  ///image Uploading Apiiiii(Completed working)
+    //      route.post('/uploadimg', upload.array('img',8), async (req, res, next) => {
+    //         const file = req.file;
+    //         if (!file) {
+    //             const error = new Error('Please upload a file')
+    //             return next(error)
+    //           }   
+    //         return res.status(201).json({Image:req.file.filename })
+    //         })
+        
 }
 
