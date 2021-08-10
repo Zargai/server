@@ -1,8 +1,4 @@
 
-# University Bus Management Platform
-
-A University bus management platform for administrations and students to check bus status and details.
-
 ## Installation
 
 1. Clone the repository.
